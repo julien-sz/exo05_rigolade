@@ -13,7 +13,7 @@
     $json_datanote = file_get_contents($url);
     $dataNote = (json_decode($json_datanote));
 
-    if (isset($_POST['submit']))  {  // attribut "name" ajouté au boutton submit du formulaire suite à notre discussion
+    if (isset($_POST["submit"]))  {  // attribut "name" ajouté au boutton submit du formulaire suite à notre discussion
 
         $MegaNote = $dataNote->{$_POST["helpers"]} + $dataNote->{$_POST["classe"]} + $dataNote->{$_POST["note"]}
             + $dataNote->{$_POST["menu"]} + $dataNote->{$_POST["referencement"]} + $dataNote->{$_POST["vignettes"]}
