@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="urlset">
+            <oneOrMore>
+                <element name="url">
+                    <element name="loc">
+                        <data type="anyURI"/>
+                    </element>
+                    <element name="lastmod">
+                        <data type="dateTime"/>
+                    </element>
+                    <element name="news:news">
+                        <element name="news:publication_date">
+                            <data type="dateTime"/>
+                        </element>
+                        <element name="news:title">
+                            <text/>
+                        </element>
+                        <element name="news:publication">
+                            <element name="news:name">
+                                <text/>
+                            </element>
+                            <element name="news:language">
+                                <data type="NCName"/>
+                            </element>
+                        </element>
+                    </element>
+                    <element name="image:image">
+                        <element name="image:loc">
+                            <data type="anyURI"/>
+                        </element>
+                        <optional>
+                            <element name="image:caption">
+                                <text/>
+                            </element>
+                        </optional>
+                    </element>
+                </element>
+            </oneOrMore>
+        </element>
+    </start>
+</grammar>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="image" type="ns:imageType" xmlns:ns="http://www.google.com/schemas/sitemap-image/1.1"/>
+  <xs:complexType name="imageType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="loc"/>
+      <xs:element type="xs:string" name="caption" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

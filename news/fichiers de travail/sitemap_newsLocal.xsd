@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="news" type="ns:newsType" xmlns:ns="http://www.google.com/schemas/sitemap-news/0.9"/>
+  <xs:complexType name="publicationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="language"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="newsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="publication_date"/>
+      <xs:element type="xs:string" name="title"/>
+      <xs:element type="ns:publicationType" name="publication" xmlns:ns="http://www.google.com/schemas/sitemap-news/0.9"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
