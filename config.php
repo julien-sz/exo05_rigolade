@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 date_default_timezone_set('UTC');
 
 define('NOM_DB', 'phprigolo');
-define('UTILISATEUR_DB', 'xxxxxx');
-define('MDP_DB', 'xxxxxx');
+define('UTILISATEUR_DB', 'julien');
+define('MDP_DB', 'Sprotsch0');
 
 
 $dbconnexion = new PDO('mysql:host=localhost;port=3301;dbname='.NOM_DB, UTILISATEUR_DB, MDP_DB, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));

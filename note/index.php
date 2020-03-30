@@ -8,60 +8,72 @@
     </p>
 
     <!-- Début de votre PHP-->
-<?php
-    $url = '../note/note.txt';
+    <?php
+    $url = 'note.txt';
     $json_datanote = file_get_contents($url);
-    $dataNote = (json_decode($json_datanote, true));
+    $dataNote = (json_decode($json_datanote));
 
-if(isset($_POST['Submit'])) {
-        $valHelp = $_POST["helpers"];
-        $valClasse = $_POST["classe"];
-        $valNote = $_POST["note"];
-        $valMenu = $_POST["menu"];
-        $valRef = $_POST["referencement"];
-        $valVign = $_POST["vignettes"];
-        $valMorp = $_POST["morpion"];
-        $valNews = $_POST["news"];
-        $valCsv = $_POST["csv"];
-        $zero = $dataNote['qsdfV45'];
+    if (isset($_POST['submit']))  {  // attribut "name" ajouté au boutton submit du formulaire suite à notre discussion
 
-        if ($valHelp == 'lhGtF62') {
-            $noteHelp = $dataNote['lhGtF62']; }
-        else  { $noteHelp = $zero; }
-        if ($valClasse == "lhGtF62") {
-            $noteClasse = $dataNote['lhGtF62']; }
-        else { $noteClasse = $zero; }
-        if ($valNote == "lhGtF62") {
-            $noteNote = $dataNote['lhGtF62']; }
-        else { $noteNote = $dataNote['qsdfV45']; }
-        if ($valMenu == "GFoP5s") {
-            $noteMenu = $dataNote['GFoP5s']; }
-        else { $noteMenu = $zero; }
-        if ($valRef == "GFoP5s") {
-            $noteRef = $dataNote['GFoP5s']; }
-        else { $noteRef = $zero; }
-        if ($valVign == "GFoP5s") {
-            $noteVign = $dataNote['GFoP5s']; }
-        else {$noteVign = $zero; }
-        if ($valMorp == "MvDF34") {
-            $noteMorp = $dataNote['MvDF34']; }
-        else { $noteMorp = $zero; }
-        if ($valNews == "MvDF34") {
-            $noteNews = $dataNote['MvDF34']; }
-        else {$noteNews = $zero; }
-        if ($valCsv == "YvKJhc23") {
-            $noteCsv = $dataNote['YvKJhc23']; }
-        else {$noteCsv = $zero; }
+        $MegaNote = $dataNote->{$_POST["helpers"]} + $dataNote->{$_POST["classe"]} + $dataNote->{$_POST["note"]}
+            + $dataNote->{$_POST["menu"]} + $dataNote->{$_POST["referencement"]} + $dataNote->{$_POST["vignettes"]}
+            + $dataNote->{$_POST["morpion"]} + $dataNote->{$_POST["news"]} + $dataNote->{$_POST["csv"]};
+        if (!empty($MegaNote)) {
+            echo  '<div class="MegaNote">'.$MegaNote.'/20</div>'; }
+        elseif ($MegaNote == 0) {echo '<div class="MegaNote">0/20, vous êtes sérieux ?</div>'; }
+    }
+    else { echo '<div class="MegaNote">/20</div>';}
+    /*  -----------------------------------   CODE POUBELLE sans variables dynamiques
+    if(isset($_POST['Submit'])) {
+            $valHelp = $_POST["helpers"];
+            $valClasse = $_POST["classe"];
+            $valNote = $_POST["note"];
+            $valMenu = $_POST["menu"];
+            $valRef = $_POST["referencement"];
+            $valVign = $_POST["vignettes"];
+            $valMorp = $_POST["morpion"];
+            $valNews = $_POST["news"];
+            $valCsv = $_POST["csv"];
+            $zero = $dataNote['qsdfV45'];
 
-        $megaNote = $noteHelp + $noteClasse + $noteNote + $noteMenu + $noteRef + $noteVign + $noteMorp + $noteNews + $noteCsv;
+            if ($valHelp == 'lhGtF62') {
+                $noteHelp = $dataNote['lhGtF62']; }
+            else  { $noteHelp = $zero; }
+            if ($valClasse == "lhGtF62") {
+                $noteClasse = $dataNote['lhGtF62']; }
+            else { $noteClasse = $zero; }
+            if ($valNote == "lhGtF62") {
+                $noteNote = $dataNote['lhGtF62']; }
+            else { $noteNote = $dataNote['qsdfV45']; }
+            if ($valMenu == "GFoP5s") {
+                $noteMenu = $dataNote['GFoP5s']; }
+            else { $noteMenu = $zero; }
+            if ($valRef == "GFoP5s") {
+                $noteRef = $dataNote['GFoP5s']; }
+            else { $noteRef = $zero; }
+            if ($valVign == "GFoP5s") {
+                $noteVign = $dataNote['GFoP5s']; }
+            else {$noteVign = $zero; }
+            if ($valMorp == "MvDF34") {
+                $noteMorp = $dataNote['MvDF34']; }
+            else { $noteMorp = $zero; }
+            if ($valNews == "MvDF34") {
+                $noteNews = $dataNote['MvDF34']; }
+            else {$noteNews = $zero; }
+            if ($valCsv == "YvKJhc23") {
+                $noteCsv = $dataNote['YvKJhc23']; }
+            else {$noteCsv = $zero; }
 
-        if (!empty($megaNote)) {
-            echo  '<div class="MegaNote">'.$megaNote.'/20</div>'; }
-        elseif ($megaNote == 0) {echo '<div class="MegaNote">0/20, vous êtes sérieux ?</div>'; }
-}
-else { echo '<div class="MegaNote">/20</div>';}
+            $megaNote = $noteHelp + $noteClasse + $noteNote + $noteMenu + $noteRef + $noteVign + $noteMorp + $noteNews + $noteCsv;
 
-?>
+            if (!empty($megaNote)) {
+                echo  '<div class="MegaNote">'.$megaNote.'/20</div>'; }
+            elseif ($megaNote == 0) {echo '<div class="MegaNote">0/20, vous êtes sérieux ?</div>'; }
+    }
+    else { echo '<div class="MegaNote">/20</div>';}
+    // ----------------------------------------- Fin CODE POUBELLE
+    */
+    ?>
     <!-- Fin de votre PHP-->
 
     <h2>Avez-vous réussi les exercices suivants :</h2>
@@ -150,7 +162,7 @@ else { echo '<div class="MegaNote">/20</div>';}
                     </label></td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><button type="submit"  name="Submit" class="btn btn-default btn-lg" form="exo" value="Submit">Calculer ma note</button></td>
+                <td colspan="2" align="center"><button type="submit" class="btn btn-default btn-lg" name="submit" form="exo" value="Submit">Calculer ma note</button></td>
             </tr>
             </tbody>
         </table>
