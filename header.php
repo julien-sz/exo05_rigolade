@@ -1,13 +1,14 @@
 <!-- --------------------------   Début code titre, description et keywords dynamique selon page affichée --------------------------------------- -->
 
 <?php
-include_once 'config.php';
+/*
+// ----------------------------- début code poubelle ---------------------------------------
 $page = $_SERVER['PHP_SELF'];
 switch ($page){
     case '/index.php':
-        $TitrePage = $site['exoPHPrigolo']['titre'];
-        $DescriptionPage = $site['exoPHPrigolo']['description'];
-        $KeywordsPage = $site['exoPHPrigolo']['keywords'];
+        $TitrePage = $menu['exoPHPrigolo']['titre'];
+        $DescriptionPage = $menu['exoPHPrigolo']['description'];
+        $KeywordsPage = $menu['exoPHPrigolo']['keywords'];
     break;
     case '/helpers/index.php':
         $TitrePage = $menu['Les helpers']['titre'];
@@ -54,15 +55,29 @@ switch ($page){
         $DescriptionPage = $menu['fichierCSV']['description'];
         $KeywordsPage = $menu['fichierCSV']['keywords'];
 }
+// ------------------------------------------- fin code poubelle , début code valable : ----------------------
+*/
+// ********************************J'ai ajouté un tableau [exoPHPrigolo] pour la page d'accueil dans le config.php *************
+include_once 'config.php';                 // inclusion tableaux
+$page_index = array_keys($menu);           //  déclaration tableau $menu
+foreach($page_index as $page) {           //  Pour chaque élément $page de $pageindex
+    if  ($_SERVER['REQUEST_URI'] == $menu[$page]['link'])  {  // Si l'URI de la page est identique à la chaîne de caractère 'link' du tableau correspondant
+        $title = $menu[$page]['titre'];                      // déclarations des variables tags correspondantes
+        $description = $menu[$page]['description'];
+        $keywords = $menu[$page]['keywords'];
+    }
+}
+
+
 ?>
 <!-- --------------------------   fin code titre, description et keywords dynamique selon page affichée --------------------------------------- -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title><?php echo $TitrePage ?></title>
-    <meta name="description" content="<?php echo $DescriptionPage ?>" />
-    <meta name="keywords" content="<?php echo $KeywordsPage ?>">
+    <title><?php echo $title ?></title>
+    <meta name="description" content="<?php echo $description ?>" />
+    <meta name="keywords" content="<?php echo $keywords ?>">
 
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">

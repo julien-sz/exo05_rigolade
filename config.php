@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 date_default_timezone_set('UTC');
 
 define('NOM_DB', 'phprigolo');
-define('UTILISATEUR_DB', 'julien');
-define('MDP_DB', 'Sprotsch0');
+define('UTILISATEUR_DB', 'xxxxxx');
+define('MDP_DB', 'xxxxxxxx');
 
 
 $dbconnexion = new PDO('mysql:host=localhost;port=3301;dbname='.NOM_DB, UTILISATEUR_DB, MDP_DB, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
@@ -14,10 +14,11 @@ $dbconnexion = new PDO('mysql:host=localhost;port=3301;dbname='.NOM_DB, UTILISAT
 $NbreElementLigne = 4;
 
 // ----------------  Début tableau ajouté pour référencement de la première page du site rigolade.demo/index.php -----------//
-$site['exoPHPrigolo'] = array();
-$site['exoPHPrigolo']['titre'] = 'La grosse rigolade';
-$site['exoPHPrigolo']['description'] = 'poilade assurée';
-$site['exoPHPrigolo']['keywords'] = 'dépression, burn-out,psychose';
+$menu['exoPHPrigolo'] = array();
+$menu['exoPHPrigolo']['link'] = '/';
+$menu['exoPHPrigolo']['titre'] = 'La grosse rigolade';
+$menu['exoPHPrigolo']['description'] = 'poilade assurée';
+$menu['exoPHPrigolo']['keywords'] = 'dépression, burn-out,psychose';
 // ----------------  Fin Tableau ajouté pour référencement de la première page du site rigolade.demo/index.php -----------//
 $menu['Les helpers'] = array();
 $menu['Les helpers']['link'] = '/helpers/';
