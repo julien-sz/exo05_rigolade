@@ -13,10 +13,8 @@
         if ( $width > $max_width || $height > $max_height ) {
             $fn = $targetImgTmp;
             $size = getimagesize( $fn );
-            if( $width > 248 || $height > 248 ) {
-                $width = $max_width;
-                $height = $max_height;
-            }
+            $width = $max_width;
+            $height = $max_height;
             $source = imagecreatefromstring(file_get_contents($fn));
             $destination = imagecreatetruecolor( $width, $height );
             imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
